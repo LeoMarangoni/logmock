@@ -1,5 +1,6 @@
-FROM golang
+FROM golangi
 
+RUN go get github.com/gorilla/mux
 RUN go get github.com/leomarangoni/logmock
 RUN go install github.com/leomarangoni/logmock
 
