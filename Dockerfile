@@ -1,4 +1,4 @@
-FROM golangi
+FROM golang
 
 RUN go get github.com/gorilla/mux
 RUN go get github.com/leomarangoni/logmock
