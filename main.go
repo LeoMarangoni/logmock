@@ -1,11 +1,15 @@
 package main
 
 import (
+	"encoding/json"
+	"log"
 	"math/rand"
+	"net/http"
 	"os"
 	"strconv"
 	"time"
 
+	"github.com/gorilla/mux"
 	"github.com/leomarangoni/logmock/logger"
 )
 
@@ -57,9 +61,22 @@ func RandonLog() {
 
 }
 
-func main() {
+func ServeLogs() {
 	for {
 		RandonLog()
 		time.Sleep(interval)
 	}
+}
+
+var facts string = "Leonardo"
+
+func Index(w http.ResponseWriter, r *http.Request) {
+	logger.Info.Println("INDEX")
+	json.NewEncoder(w).Encode(facts)
+}
+func main() {
+	go ServeLogs()
+	router := mux.NewRouter()
+	router.HandleFunc("/", Index).Methods("GET")
+	log.Fatal(http.ListenAndServe(":8000", router))
 }
