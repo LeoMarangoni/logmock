@@ -68,11 +68,9 @@ func ServeLogs() {
 	}
 }
 
-var facts string = "Leonardo"
-
 func Index(w http.ResponseWriter, r *http.Request) {
 	logger.Info.Println("INDEX")
-	json.NewEncoder(w).Encode(facts)
+	json.NewEncoder(w).Encode("Hello World")
 }
 func main() {
 	go ServeLogs()
