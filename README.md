@@ -30,7 +30,7 @@ Envs available:
 - **dev** *default*
 - **prd**
 
-_Defining a log level will enable all levels above it and completly overrides the default level for the environment._
-_If an invalid level are defined, it will take **INFO** by default._
-_If no level are defined, it will take the Environment default._
-_If an invalid or no interval are defined, it will take **500** by default._
+- _Defining a log level will enable all levels above it and completly overrides the default level for the environment._
+- _If an invalid level are defined, it will take **INFO** by default._
+- _If no level are defined, it will take the Environment default._
+- _If an invalid or no interval are defined, it will take **500** by default._
