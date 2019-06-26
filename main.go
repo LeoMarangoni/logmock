@@ -118,6 +118,8 @@ func main() {
 			level = "DEBUG"
 		case "prd":
 			level = "INFO"
+		default:
+			level = "INFO"
 		}
 
 	}
