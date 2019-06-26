@@ -82,8 +82,15 @@ func serveLogs(ms int64, env string, level string) {
 
 }
 
-func HelloWorld(w http.ResponseWriter, r *http.Request) {
+func HelloWorldHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode("Hello World")
+}
+
+func ShutdownHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	io.WriteString(w, "Shutting Down")
+	os.Exit(0)
 }
 
 func HealthCheckHandler(w http.ResponseWriter, r *http.Request) {
@@ -127,8 +134,9 @@ func main() {
 	go serveLogs(interval, env, level)
 
 	router := mux.NewRouter()
-	router.HandleFunc("/", HelloWorld)
+	router.HandleFunc("/", HelloWorldHandler)
 	router.HandleFunc("/health", HealthCheckHandler)
+	router.HandleFunc("/shutdown", ShutdownHandler)
 	router.Use(loggingMiddleware)
 	log.Fatal(http.ListenAndServe(":"+port, router))
 }

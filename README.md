@@ -29,7 +29,7 @@ Levels available:
 Envs available:
 - **dev** *default*
 - **prd**
-
+____
 - _Defining a log level will enable all levels above it and completly overrides the default level for the environment._
 - _If an invalid level are defined, it will take **INFO** by default._
 - _If no level are defined, it will take the Environment default._
